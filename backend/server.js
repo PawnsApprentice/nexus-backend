@@ -9,6 +9,7 @@ import userRoutes from "./router/userRoutes.js";
 import orderRoutes from "./router/orderRoutes.js";
 import uploadRoutes from "./router/uploadRoutes.js";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
+import cors from "cors";
 
 dotenv.config();
 
@@ -21,6 +22,8 @@ if (process.env.NODE_ENV === "development") {
 }
 
 app.use(express.json()); //body parser
+
+app.use(cors()); // Enable CORS for all routes
 
 app.use("/api/products", productRoutes);
 app.use("/api/users", userRoutes);
